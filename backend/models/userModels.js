@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema({
     },
     followers:{
         type:[String],
-        deafault:[],
+        default:[],
     },
     following:{
         type:[String],
