@@ -11,7 +11,7 @@ const signupUser = async (req , res) => {
         const user = await User.findOne({$or:[{email} , {username}]});
 
         if(user){
-            return res.status(400).json({message:"User already exists"})
+            return res.status(400).json({error:"User already exists"})
         }
 
         //* hashing password 
@@ -44,7 +44,7 @@ const signupUser = async (req , res) => {
         
     }
     catch(error){
-        res.status(500).json({message : error.message})
+        res.status(500).json({error : error.message})
         console.log("Error in signup User" , error.message)
     }
 }
@@ -70,7 +70,7 @@ const loginUser = async (req , res) => {
         })
         
     } catch (error) {
-        res.status(500).json({message : error.message})
+        res.status(500).json({error : error.message})
         console.log("Error in login User" , error.message)
     }
 }
@@ -83,7 +83,7 @@ const logoutUser = (req , res) => {
         res.status(200).json({message : "User logged out successfully"});
         
     } catch (error) {
-        res.status(500).json({message : error.message})
+        res.status(500).json({error : error.message})
         console.log("Error in logout User" , error.message)
     }
 }
@@ -121,7 +121,7 @@ const followUnfollowUser = async (req , res) => {
         }
         
     } catch (error) {
-        res.status(500).json({message : error.message})
+        res.status(500).json({error : error.message})
         console.log("Error in logout User" , error.message)
     }
 }
@@ -153,7 +153,7 @@ const updateUser = async (req , res) => {
 
     } 
     catch (error) {
-        res.status.json({message : error.message})
+        res.status.json({error : error.message})
         console.log("Error in updateUser" , error.message);
         
     }
@@ -168,7 +168,7 @@ const getUserProfile = async (req , res) => {
 
     } 
     catch (error) {
-        res.status(500).json({message : error.message})
+        res.status(500).json({error : error.message})
         console.log("Error in getting profile" , error.message);
     }
 }
